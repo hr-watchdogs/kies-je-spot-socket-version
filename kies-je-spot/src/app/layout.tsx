@@ -5,10 +5,9 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Kies je spot',
-  description: 'Watchdogs',
-  robots: "no follow",
+  description: 'Watchdogs prototype',
+  robots: "no-follow",
   openGraph: {
-    description: "test og",
     image:"/next.svg"
   }
 }
