@@ -1,14 +1,9 @@
 "use client"
-import Image from 'next/image'
 import {Heading} from "@/components/ui/Heading";
 import {Button, ButtonType} from "@/components/ui/Button";
-import {OTPForm} from "@/components/ui/OTPForm";
-import {useEffect, useRef, useState} from "react";
-import {AuthCodeRef} from "react-auth-code-input";
-import { useRouter } from 'next/navigation';
+
 
 export default function Page() {
-    const router = useRouter()
     return (
         <div className=" bg-blue-500 bottom-0 h-[65vh] w-full rounded-t-[5vh] p-6 flex items-center justify-center">
             <div className="flex items-center flex-col justify-between py-8 w-full h-full">
@@ -18,8 +13,7 @@ export default function Page() {
                 </div>
                 <div className="flex flex-col justify-center items-center">
                     {/*todo: Create component for names list*/}
-                    <Heading type={"h2"}>component for names list</Heading>
-
+                    <Heading type={"h5"}>component for names list</Heading>
                 </div>
                 <div className="flex flex-col space-y-2">
                     <Button
@@ -27,8 +21,6 @@ export default function Page() {
                         onClick={async (e) => {
                             e.preventDefault()
 
-                            // window.alert(`Code: ${otp}`)
-                            await router.push('/register-unit')
                         }}
                     >Volgende</Button>
                     <p className="font-xs">Geen code zichtbaar? Vraag de trainer om assistentie.</p>
