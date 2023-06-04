@@ -20,7 +20,7 @@ const fontWeighClassest:ParagraphClasses = {
 
 export const Paragraph:FC<ParagraphProps> = ({children,fontWeight, className,...props} ) => {
     const weight = fontWeight?.toLowerCase();
-    const size = fontWeighClassest[weight] || "font-semibold";
+    const size = fontWeighClassest[weight ?? fontWeighClassest.regular ] ?? "font-semibold";
 
     return createElement(
         "p",
