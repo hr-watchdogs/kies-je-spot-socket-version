@@ -13,7 +13,9 @@ export default function OverviewPage() {
     const startPoint = new mapboxgl.LngLat(4.4900041626887495, 51.88733854904965);
     const onMapLoaded = (map: mapboxgl.Map) => {
         console.log("Loaded map...")
-        new Marker().setLngLat(startPoint).addTo(map);
+        // const marker = new Marker().setLngLat(startPoint)
+        // console.log(marker)
+        //     marker.addTo(map);
     }
     const onMapRemoved = () => {
         console.log("Map removed...")

@@ -4,6 +4,7 @@ import {Button, ButtonType} from "@/components/ui/Button";
 import {RegisterUnitNames} from "@/components/ui/Form/RegisterUnitNames";
 import {useState} from "react";
 import {Paragraph} from "@/components/ui/Typography/Paragraph";
+import Link from "next/link";
 
 
 export default function Page() {
@@ -21,13 +22,14 @@ export default function Page() {
                     <RegisterUnitNames names={names} setNames={setNames}/>
                 </div>
                 <div className="flex flex-col space-y-2">
-                    <Button
-                        buttonType={ButtonType.PRIMARY}
-                        onClick={async (e) => {
-                            e.preventDefault()
-                            console.log(names)
-                        }}
-                    >Volgende</Button>
+                    <Link href="/register/overview">
+
+                        <Button
+                            buttonType={ButtonType.PRIMARY}
+                        >
+                            Volgende
+                        </Button>
+                    </Link>
                     <Paragraph fontWeight="regular" className="text-sm">Geen code zichtbaar? Vraag de trainer om
                         assistentie.</Paragraph>
                 </div>
