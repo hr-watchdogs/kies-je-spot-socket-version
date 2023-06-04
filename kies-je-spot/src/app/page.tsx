@@ -1,5 +1,5 @@
 "use client"
-import {Heading} from "@/components/ui/Heading";
+import {Heading} from "@/components/ui/Typography/Heading";
 import {Button, ButtonType} from "@/components/ui/Button";
 import {useRouter} from "next/navigation";
 

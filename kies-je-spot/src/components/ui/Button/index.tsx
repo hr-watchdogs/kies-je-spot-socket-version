@@ -1,9 +1,11 @@
 "use client"
 import {ButtonHTMLAttributes, FC, ReactNode} from "react";
+import {classNames} from "@/utils/classNames";
 
 export enum ButtonType {
     PRIMARY,
     SECONDARY,
+    ROUNDED,
     OUTLINE,
     REVERSED,
     DISABLED
@@ -15,6 +17,7 @@ const buttonClassesMap = {
     [ButtonType.SECONDARY]: "w-full bg-blue-500 rounded-lg text-white font-semibold p-2 h-16",
     [ButtonType.OUTLINE]: "w-full bg-blue-500 rounded-lg text-white font-semibold p-2 h-16",
     [ButtonType.REVERSED]: "w-full bg-blue-500 rounded-lg text-white font-semibold p-2 h-16",
+    [ButtonType.ROUNDED]: "bg-blue-300 rounded-full text-white font-semibold p-2 w-12 h-12",
     [ButtonType.DISABLED]: "w-full bg-gray-300 rounded-lg text-white font-semibold p-2 h-16",
 };
 
@@ -30,7 +33,7 @@ export const Button: FC<Partial<ButtonProps>> = ({buttonType= ButtonType.PRIMARY
     return (
         <button
             {...props}
-            className={buttonClass}>
+            className={classNames(buttonClass, props.className ?? "")}>
             {children && <span>{children}</span>}
         </button>
     );
