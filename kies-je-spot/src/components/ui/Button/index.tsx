@@ -1,5 +1,6 @@
 "use client"
 import {ButtonHTMLAttributes, FC, ReactNode} from "react";
+import {classNames} from "@/utils/classNames";
 
 export enum ButtonType {
     PRIMARY,
@@ -30,7 +31,7 @@ export const Button: FC<Partial<ButtonProps>> = ({buttonType= ButtonType.PRIMARY
     return (
         <button
             {...props}
-            className={buttonClass}>
+            className={classNames(buttonClass, props.className ?? "")}>
             {children && <span>{children}</span>}
         </button>
     );
