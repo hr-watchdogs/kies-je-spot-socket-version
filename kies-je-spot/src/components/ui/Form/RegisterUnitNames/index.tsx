@@ -1,6 +1,6 @@
-import {Dispatch, FC, SetStateAction, useState} from "react";
+import {Dispatch, FC, SetStateAction} from "react";
 import {Input} from "@/components/ui/Form/Input";
-import {Button} from "@/components/ui/Button";
+import {Button, ButtonType} from "@/components/ui/Button";
 import {classNames} from "@/utils/classNames";
 
 interface RegisterUnitNamesOptions {
@@ -21,12 +21,11 @@ export const RegisterUnitNames: FC<RegisterUnitNamesOptions> = ({names, setNames
     };
     return (
         names.map((name, index) => {
-            console.log(names.length === MAX_ARRAY_LENGTH)
-            return <div className="flex flex-row justify-center items-center space-x-6">
+            return <div className="flex w-full px-12  flex-row justify-center items-center space-x-6">
                 <Input
                     key={index}
                     value={name}
-                    className={classNames("bg-gray-300 focus:bg-white", )}
+                    className={classNames("bg-gray-300 p-0 mx-0 focus:bg-white w-fit",)}
                     onChange={(event) => {
                         const {value} = event.target
                         if (setNames) {
@@ -39,22 +38,24 @@ export const RegisterUnitNames: FC<RegisterUnitNamesOptions> = ({names, setNames
                     }
                     }
                 />{
-                (names.length === index + 1 || names.length === index + 1 && index === 0 )&& names.length !== MAX_ARRAY_LENGTH ?
+                (names.length === index + 1 || names.length === index + 1 && index === 0) && names.length !== MAX_ARRAY_LENGTH ?
                     <Button
+                        buttonType={ButtonType.ROUNDED}
                         onClick={() => setNames ?
                             setNames((prevState) => {
                                 if (prevState.length >= MAX_ARRAY_LENGTH) return prevState
-                                    return [...prevState, ""]
+                                return [...prevState, ""]
                             }) :
                             () => {
                                 console.log("Setnames callback is not configured")
                             }
                         }
-                        className="rounded-full w-[50px] h-[50px] bg-green-600">
+                        className=" w-16 h-[50px] bg-green-600">
                         +
                     </Button>
                     :
-                    <Button className="rounded-full w-[50px] h-[50px]" onClick={()=>handleRemoveForm(index)}>-</Button>
+                    <Button buttonType={ButtonType.ROUNDED}
+                            className="rounded-full w-16 h-[50px]" onClick={() => handleRemoveForm(index)}>-</Button>
             }
             </div>
         })
