@@ -2,6 +2,7 @@ import {Dispatch, FC, SetStateAction} from "react";
 import {Input} from "@/components/ui/Form/Input";
 import {Button, ButtonType} from "@/components/ui/Button";
 import {classNames} from "@/utils/classNames";
+import {MinusIcon, PlusIcon} from "@heroicons/react/20/solid";
 
 interface RegisterUnitNamesOptions {
     names: string[]
@@ -50,12 +51,14 @@ export const RegisterUnitNames: FC<RegisterUnitNamesOptions> = ({names, setNames
                                 console.log("Setnames callback is not configured")
                             }
                         }
-                        className=" w-16 h-[50px] bg-green-600">
-                        +
+                        className=" bg-green-600 flex items-center justify-center"
+                    >
+                        <PlusIcon className="w-4 h-4"/>
                     </Button>
                     :
                     <Button buttonType={ButtonType.ROUNDED}
-                            className="rounded-full w-16 h-[50px]" onClick={() => handleRemoveForm(index)}>-</Button>
+                            className=" flex items-center justify-center"
+                            onClick={() => handleRemoveForm(index)}><MinusIcon className="w-4 h-4"/></Button>
             }
             </div>
         })
