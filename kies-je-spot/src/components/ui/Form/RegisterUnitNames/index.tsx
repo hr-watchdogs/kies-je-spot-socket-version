@@ -3,13 +3,16 @@ import {Input} from "@/components/ui/Form/Input";
 import {Button, ButtonType} from "@/components/ui/Button";
 import {classNames} from "@/utils/classNames";
 import {MinusIcon, PlusIcon} from "@heroicons/react/20/solid";
+import {Paragraph} from "@/components/ui/Typography/Paragraph";
 
 interface RegisterUnitNamesOptions {
     names: string[]
     setNames?: Dispatch<SetStateAction<string[]>>
+    emptyFields?: (number | undefined)[] | undefined
+
 }
 
-export const RegisterUnitNames: FC<RegisterUnitNamesOptions> = ({names, setNames}) => {
+export const RegisterUnitNames: FC<RegisterUnitNamesOptions> = ({names, emptyFields= [], setNames}) => {
     const MAX_ARRAY_LENGTH = 3; // Set your desired maximum length
     const handleRemoveForm = (index: number) => {
         if (setNames) {
@@ -22,23 +25,33 @@ export const RegisterUnitNames: FC<RegisterUnitNamesOptions> = ({names, setNames
     };
     return (
         names.map((name, index) => {
-            return <div className="flex w-full px-12  flex-row justify-center items-center space-x-6">
-                <Input
-                    key={index}
-                    value={name}
-                    className={classNames("bg-gray-300 p-0 mx-0 focus:bg-white w-fit",)}
-                    onChange={(event) => {
-                        const {value} = event.target
-                        if (setNames) {
-                            setNames((prevNames) => {
-                                const updatedNames = [...prevNames];
-                                updatedNames[index] = value;
-                                return updatedNames;
-                            });
+            let emptyField = emptyFields?.includes(index)
+            return <div className="flex w-full px-12  flex-row justify-center items-center space-x-6 ">
+                <div className="flex flex-col w-full  justify-center py-2 relative">
+                    <Input
+                        key={index}
+                        value={name}
+                        className={classNames("bg-gray-300 w-full p-0 mx-0 focus:bg-white w-fit")}
+                        invalid={emptyField}
+                        placeholder="Vul naam in"
+                        onChange={(event) => {
+                            const {value} = event.target
+                            if (value.length !== 0) {
+                                emptyField = false
+                            }
+                            if (setNames) {
+                                setNames((prevNames) => {
+                                    const updatedNames = [...prevNames];
+                                    updatedNames[index] = value;
+                                    return updatedNames;
+                                });
+                            }
                         }
-                    }
-                    }
-                />{
+                        }
+                    />
+                    {emptyField? <Paragraph fontWeight="regular" className="absolute mt-24 text-xs text-red-600">Veld mag niet leeg zijn.</Paragraph>: null}
+                </div>
+                {
                 (names.length === index + 1 || names.length === index + 1 && index === 0) && names.length !== MAX_ARRAY_LENGTH ?
                     <Button
                         buttonType={ButtonType.ROUNDED}

@@ -36,7 +36,7 @@ export default function Index() {
                 <div className="flex flex-col items-center w-full space-y-2 xl:space-y-6">
                     <Heading type={"h2"} className="text-2xl sm:max-xl:text-4xl xl:text-6xl">Voer trainingscode
                         in</Heading>
-                    <Paragraph fontWeight="regular" className="sm:max-xl:text-xl xl:text-xl text-xs">Voer de code in
+                    <Paragraph fontWeight="regular">Voer de code in
                         aangegeven op het bord.</Paragraph>
                 </div>
                 <div className="flex flex-col justify-center items-center">
