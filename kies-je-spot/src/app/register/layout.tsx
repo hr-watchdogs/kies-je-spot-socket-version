@@ -1,4 +1,5 @@
 import Image from "next/image";
+import {ReactNode} from "react";
 
 // const inter = Inter({ subsets: ['latin'] })
 
@@ -12,18 +13,16 @@ import Image from "next/image";
 //   }
 // }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
+export default function RootLayout(props: {
+    children: ReactNode;
+    banner: ReactNode;
+    start: ReactNode;
 }) {
   return (
       <main className="flex min-h-screen flex-col items-center h-screen w-screen bg-white flex flex-col justify-end items-end">
-        <div className="flex items-center justify-center w-full h-[35vh] landscape:h-[20vh] ">
-          <Image src={'/onboarding/otp.png'} alt={"Illustration password"} width={150} height={150}/>
-        </div>
+          {props.banner}
         <div className="bg-blue-500 bottom-0 h-full w-full overflow-hidden landscape:h-[80vh] portrait:xl:h-[75vh] rounded-t-[5vh] flex items-center justify-center">
-          {children}
+          {props.children}
         </div>
       </main>
   )

@@ -23,7 +23,6 @@ export default function Page() {
                 </div>
                 <div className="flex flex-col space-y-2">
                     <Link href="/register/overview">
-
                         <Button
                             buttonType={ButtonType.PRIMARY}
                         >
