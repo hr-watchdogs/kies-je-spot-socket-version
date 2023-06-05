@@ -22,7 +22,7 @@ export default function Page() {
                     <RegisterUnitNames names={names} setNames={setNames}/>
                 </div>
                 <div className="flex flex-col space-y-2">
-                    <Link href="/register/overview">
+                    <Link href="/register/overview" prefetch={true}>
                         <Button
                             buttonType={ButtonType.PRIMARY}
                         >
