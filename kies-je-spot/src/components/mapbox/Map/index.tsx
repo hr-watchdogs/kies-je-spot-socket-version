@@ -24,7 +24,8 @@ function MapboxMap({initialOptions = {}, onMapLoaded, onMapRemoved}: MapboxMapPr
         const mapboxMap = new mapboxgl.Map({
             container: node,
             accessToken: process.env.NEXT_PUBLIC_MAPBOX_TOKEN,
-            style: "mapbox://styles/mapbox/streets-v11",
+            style: "mapbox://styles/mhvqrjdaqjpqhmqghc/cliinjqz0005601qp00io177n",
+            // style: "mapbox://styles/mapbox/streets-v11",
             zoom: 9,
             ...initialOptions,
         });
