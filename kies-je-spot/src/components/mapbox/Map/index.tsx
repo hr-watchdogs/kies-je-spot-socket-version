@@ -1,5 +1,5 @@
 import * as React from "react";
-import mapboxgl from "mapbox-gl";
+import mapboxgl, {Marker} from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 interface MapboxMapProps {
@@ -32,6 +32,9 @@ function MapboxMap({initialOptions = {}, onMapLoaded, onMapRemoved}: MapboxMapPr
 
         setMap(mapboxMap);
 
+        const marker = new Marker()
+            .setLngLat([4.4831341686501816, 51.88601519268426])
+            .addTo(mapboxMap);
 
         if (onMapLoaded) mapboxMap.once("load", onMapLoaded);
         if (map instanceof mapboxgl.Map) {
