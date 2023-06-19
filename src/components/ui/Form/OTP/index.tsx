@@ -29,6 +29,7 @@ export const OTPForm: FC<Partial<OTPFormProps>> = ({setInvalid, setValue, value,
                 inputClassName={classNames("w-10 h-10 sm:max-xl:h-16 sm:max-xl:w-16 xl:w-20 xl:h-20 max-w-16 transition-color ease-out duration-[900ms] m-2 sm:max-xl:m-4 rounded-lg text-black text-center font-semibold grow text-xl group group-invalid", invalid ? "border-[#FF0000] bg-[#FFD3D3] border-2" : "")}
                 length={5}
                 onChange={(res) => handleOnChange(res)}
+                allowedCharacters="numeric"
             />
             <Transition
                 show={invalid}
